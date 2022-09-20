@@ -20,7 +20,7 @@ It will Listen and serve HTTP on localhost:8080
 | POST | /createRule | It takes an array of rules and inserts them into the database. |
 | GET | /changePrice | It takes an array of tickets and returns the price with the highest profit for each ticket. |
 
-There are some [examples](https://github.com/arrshad/pricing-engine/examples) for each endpoint.
+There are some [examples](https://github.com/arrshad/pricing-engine/tree/master/examples) for each endpoint.
 
 
 ## Built with
@@ -30,4 +30,4 @@ There are some [examples](https://github.com/arrshad/pricing-engine/examples) fo
 
 ## License
 
-This software is licensed under the [MIT](https://github.com/arrshad/pricing-engine/LICENSE)
+This software is licensed under the [MIT](https://github.com/arrshad/pricing-engine/tree/master/LICENSE)
