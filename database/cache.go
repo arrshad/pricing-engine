@@ -9,7 +9,7 @@ func (db *Database) initCache() (err error) {
 
 	// Add sql database names and ids into redis.
 
-	tables := []string{"cities", "airlines", "agencies", "suppliers"}
+	tables := [4]string{CITY, AIRLINE, AGENCY, SUPPLIER}
 
 	// For loop that iterates over tables list and
 	// fetch data from sql database and then add

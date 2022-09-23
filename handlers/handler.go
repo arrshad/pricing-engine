@@ -23,25 +23,27 @@ func New(db *database.Database) *handler {
 // database and returns a response for each rule
 func (h *handler) CreateRule(c *gin.Context) {
 	var rules []models.RawRule
-	var responses []models.Response
 
 	if err := c.BindJSON(&rules); err != nil {
-		responses = append(responses, models.Response{
-			OK:      true,
+		c.JSON(http.StatusOK, models.Response{
+			OK:      false,
 			Message: "invalid input",
 		})
-		c.JSON(http.StatusOK, responses)
 		return
 	}
+
+	responses := make([]models.Response, len(rules))
+
 	for i := range rules {
 		r := models.Response{OK: true}
 		id, err := h.db.AddRule(rules[i])
 		if err != nil {
 			r.OK = false
 			r.Message = err.Error()
+		} else {
+			r.Message = strconv.Itoa(id)
 		}
-		r.Message = strconv.Itoa(id)
-		responses = append(responses, r)
+		responses[i] = r
 	}
 
 	c.JSON(http.StatusOK, responses)

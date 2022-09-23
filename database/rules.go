@@ -20,7 +20,7 @@ func (db *Database) AddRule(rawRule models.RawRule) (int, error) {
 
 		// Get origin id and validate it
 		if rawRule.Routes[i].Origin != "" {
-			oID, err = db.getValidID("cities", rawRule.Routes[i].Origin)
+			oID, err = db.getValidID(CITY, rawRule.Routes[i].Origin)
 			if err != nil {
 				return 0, err
 			}
@@ -28,7 +28,7 @@ func (db *Database) AddRule(rawRule models.RawRule) (int, error) {
 
 		// Get destination id and validate it
 		if rawRule.Routes[i].Destination != "" {
-			dID, err = db.getValidID("cities", rawRule.Routes[i].Destination)
+			dID, err = db.getValidID(CITY, rawRule.Routes[i].Destination)
 			if err != nil {
 				return 0, err
 			}
@@ -42,7 +42,7 @@ func (db *Database) AddRule(rawRule models.RawRule) (int, error) {
 
 	// Add airlines to rule model
 	for i := range rawRule.Airlines {
-		id, err := db.getValidID("airlines", rawRule.Airlines[i])
+		id, err := db.getValidID(AIRLINE, rawRule.Airlines[i])
 		if err != nil {
 			return 0, err
 		}
@@ -54,7 +54,7 @@ func (db *Database) AddRule(rawRule models.RawRule) (int, error) {
 
 	// Add agencies to rule model
 	for i := range rawRule.Agencies {
-		id, err := db.getValidID("agencies", rawRule.Agencies[i])
+		id, err := db.getValidID(AGENCY, rawRule.Agencies[i])
 		if err != nil {
 			return 0, err
 		}
@@ -66,7 +66,7 @@ func (db *Database) AddRule(rawRule models.RawRule) (int, error) {
 
 	// Add suppliers to rule model
 	for i := range rawRule.Suppliers {
-		id, err := db.getValidID("suppliers", rawRule.Suppliers[i])
+		id, err := db.getValidID(SUPPLIER, rawRule.Suppliers[i])
 		if err != nil {
 			return 0, err
 		}
